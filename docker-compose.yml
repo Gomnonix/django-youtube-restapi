@@ -1,4 +1,33 @@
-version: "3.11" # Docker ComposeAPI
+# version: "3.11" # Docker ComposeAPI
+# services:
+#   app:
+#     build:
+#       context: .
+#       args:
+#         - DEV=true
+#     ports:
+#       - "8000:8000"
+#     volumes:
+#       - ./app:/app
+#     command: sh -c "python manage.py runserver 0.0.0.0:8000"
+#     environment:
+#       - DB_HOST=db
+#       - DB_NAME=youtube
+#       - DB_USER=gomnonix
+#       - DB_PASS=password123
+#     depends_on:
+#       - db
+
+#     db: #PostgreSQL Database
+#       image: postgres:16-alpine
+#       volumes:
+#       - ./data/db:/var/lib/postgresql/data
+#       environment:
+#       - POSTGRES_DB=youtube
+#       - POSTGRES_USER=gomnonix 
+#       - POSTGRES_PASSWORD=password123
+
+version: "3.11"
 services:
   app:
     build:
@@ -10,3 +39,20 @@ services:
     volumes:
       - ./app:/app
     command: sh -c "python manage.py runserver 0.0.0.0:8000"
+    environment:
+      - DB_HOST=db
+      - DB_NAME=youtube
+      - DB_USER=gomnonix
+      - DB_PASS=password123
+    depends_on:
+      - db
+
+  # app: 과 같은 뎁스로
+  db:
+    image: postgres:16-alpine
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=youtube
+      - POSTGRES_USER=gomnonix
+      - POSTGRES_PASSWORD=password123
