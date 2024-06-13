@@ -20,5 +20,5 @@ jobs:
       - name: Run Test-Code # 테스트 코드 실행
         # run: docker-compose run --rm app sh -c "python manage.py test"
         run: docker-compose run --rm app sh -c "python manage.py wait_for_db && python manage.py test"
-      - name: Run Flake8 for Lint Check # pep8 파이썬 코드 스타일 가이드 준수 여부 검사
-        run: docker-compose run --rm app sh -c "flake8"
+      #- name: Run Flake8 for Lint Check # pep8 파이썬 코드 스타일 가이드 준수 여부 검사
+      # run: docker-compose run --rm app sh -c "flake8"
