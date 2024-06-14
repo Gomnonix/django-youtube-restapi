@@ -44,3 +44,5 @@ ex) 파일(이미지, 동영상)
 (6) Common
 - created_at
 - updated_at
+
+모델을 먼저 정의한 이유는 Django -> DB migration(테이블 구조 정의) -> REST API

@@ -28,10 +28,12 @@ class UserManager(BaseUserManager):
 
         return user
     
+
     # docker-compose run --rm app sh -c 'python manage.py test users'
     # docker-compose run --rm app sh -c 'python manage.py makemigrations'
     # docker-compose run --rm app sh -c 'python manage.py migrate'
     # docker-compose run --rm app sh -c 'python manage.py showmigrations': 디버깅) 유저 충돌 문제 해결 방법
+    # docker-compose run --rm app sh -c 'python manage.py createsuperuser', 슈퍼 user 생성
 
 # - email
 # - password

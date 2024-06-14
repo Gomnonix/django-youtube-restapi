@@ -1,3 +1,4 @@
 django>=5.0.1,<6.0.0 # 5.0.1 이상 6.0.0 미만
 djangorestframework>=3.14.0,<4.0.0 # DRF(Django Rest Frameword)
 psycopg2-binary>=2.9.9,<3.0 # Psycopg2: PostgreSQL connector
+drf-spectacular>=0.27.2,<0.28.0 # DRF-Sepectacular
