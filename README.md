@@ -1,5 +1,6 @@
 # django-youtube-restapi
-Docker란: https://www.notion.so/docker-f89977994ec64ba39e6e32e1aa6316a9 \n
+Docker란: https://www.notion.so/docker-f89977994ec64ba39e6e32e1aa6316a9
+
 CI/CD, GitHub Actions, PostgreSQL: https://www.notion.so/CI-CD-861e95b69421468b862b93423b8dc1a6
 
 ## (1) Project Settings
