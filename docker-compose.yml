@@ -1,4 +1,4 @@
-version: "3.11"
+# version: "3.11" 이 부분은 docker compose 2.25 이상 부터는 필요없다고 한다.
 services:
   app:
     build:
@@ -13,20 +13,21 @@ services:
       sh -c "python manage.py wait_for_db &&
              python manage.py migrate &&
              python manage.py runserver 0.0.0.0:8000"
+
     environment:
       - DB_HOST=db
       - DB_NAME=youtube
-      - DB_USER=seopftware
+      - DB_USER=gomnonix
       - DB_PASS=password123
+    # 아래 db가 준비가 되면 컨테이너를 실행하라는 의존성을 명시해줌
     depends_on:
       - db
 
-  # app: 과 같은 뎁스로
-  db:
+  db: # PostgreSQL Database
     image: postgres:16-alpine
-    volumes:
+    volumes: # 아래 콜론의 의미는 앞의 경로로 뒤의 경로의 파일을 옮긴다는 의미
       - ./data/db:/var/lib/postgresql/data
     environment:
       - POSTGRES_DB=youtube
       - POSTGRES_USER=gomnonix
-      - POSTGRES_PASSWORD=password123  
+      - POSTGRES_PASSWORD=password123
