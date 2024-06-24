@@ -1,14 +1,11 @@
 version: "3.11"
+
 services:
   app:
     build:
       context: .
-      args:
-        - DEV=true
-    ports:
-      - "9000:8000"
+    restart: always
     volumes:
-      - ./app:/app
       - static-data:/vol/web
     environment:
       - DB_HOST=db
@@ -17,13 +14,11 @@ services:
       - DB_PASS=${DB_PASS}
       - SECRET_KEY=${DJANGO_SECRET_KEY}
       - ALLOWED_HOSTS=${DJANGO_ALLOWED_HOSTS}
-      - PYTHONPATH=/app
     depends_on:
       - db
-      - redis
 
   db:
-    image: postgres:16.3-alpine3.20
+    image: postgres:13-alpine
     restart: always
     volumes:
       - postgres-data:/var/lib/postgresql/data
@@ -32,11 +27,6 @@ services:
       - POSTGRES_USER=${DB_USER}
       - POSTGRES_PASSWORD=${DB_PASS}
 
-  redis: # Redis
-    image: redis:alpine
-    ports:
-      - "6379:6379"
-
   proxy:
     build:
       context: ./proxy
@@ -44,13 +34,10 @@ services:
     depends_on:
       - app
     ports:
-      - "80:80"  # Public port mapping
+      - 80:8s0  # Public port mapping
+    # - 8000:8000 # 로컬에서 테스트시
     volumes:
       - static-data:/vol/static
-    environment:
-      - LISTEN_PORT=80  # Nginx will listen on port 80
-      - APP_HOST=app
-      - APP_PORT=9000  # Django app will run on port 9000 internally
 
 volumes:
   postgres-data:
