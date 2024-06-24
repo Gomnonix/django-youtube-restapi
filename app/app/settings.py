@@ -34,6 +34,8 @@ CUSTOM_USER_APPS = [
     'videos.apps.VideosConfig',
     'drf_spectacular',
     'rest_framework',
+    'channels',
+	'chat.apps.ChatConfig'
 ]
 
 INSTALLED_APPS = CUSTOM_USER_APPS + DJANGO_SYSTEM_APPS
@@ -71,7 +73,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'app.wsgi.application'
-
 
 # Database
 DATABASES = {
@@ -134,3 +135,11 @@ MEDIA_URL = '/static/media/'
 
 MEDIA_ROOT = '/vol/web/media'
 STATIC_ROOT = '/vol/web/static'
+
+ASGI_APPLICATION = 'app.routes.application'
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels.layers.InMemoryChannelLayer"
+    },
+}
