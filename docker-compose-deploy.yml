@@ -34,7 +34,7 @@ services:
     depends_on:
       - app
     ports:
-      - 80:8s0  # Public port mapping
+      - 80:80  # Public port mapping
     # - 8000:8000 # 로컬에서 테스트시
     volumes:
       - static-data:/vol/static
