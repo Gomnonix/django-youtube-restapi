@@ -6,7 +6,7 @@ services:
       args:
         - DEV=true
     ports:
-      - "8000:8000"
+      - "80:8000"
     volumes:
       - ./app:/app
     command: >
