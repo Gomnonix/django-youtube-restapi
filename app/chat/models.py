@@ -9,7 +9,6 @@ class ChatRoom(CommonModel):
     name = models.CharField(max_length=100)
 
 class ChatMessage(CommonModel):
-    # 채팅방이 삭제되면 => 메세지도 삭제되어야 하는가?? ㅇㅇ
     room = models.ForeignKey(ChatRoom, on_delete=models.CASCADE)
     sender = models.ForeignKey(User, on_delete=models.CASCADE)
     message = models.TextField()

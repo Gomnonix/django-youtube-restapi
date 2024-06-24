@@ -35,7 +35,7 @@ CUSTOM_USER_APPS = [
     'drf_spectacular',
     'rest_framework',
     'channels',
-	'chat.apps.ChatConfig'
+	'chat.apps.ChatConfig',
 ]
 
 INSTALLED_APPS = CUSTOM_USER_APPS + DJANGO_SYSTEM_APPS
