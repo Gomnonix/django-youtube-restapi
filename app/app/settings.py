@@ -73,6 +73,14 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'app.wsgi.application'
+ASGI_APPLICATION = 'app.routes.application'
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels.layers.InMemoryChannelLayer"
+    },
+}
+
 
 # Database
 DATABASES = {
@@ -135,11 +143,3 @@ MEDIA_URL = '/static/media/'
 
 MEDIA_ROOT = '/vol/web/media'
 STATIC_ROOT = '/vol/web/static'
-
-ASGI_APPLICATION = 'app.routes.application'
-
-CHANNEL_LAYERS = {
-    "default": {
-        "BACKEND": "channels.layers.InMemoryChannelLayer"
-    },
-}

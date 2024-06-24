@@ -1,6 +1,3 @@
-# Chat 모델
-# - ChatRoom: 오픈채팅방(비번O,비번X), 개인채팅방
-# - ChatMessage: 메세지를 주고 받는 모델
 from django.db import models
 from users.models import User
 from common.models import CommonModel
