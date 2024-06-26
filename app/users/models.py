@@ -43,7 +43,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     email = models.CharField(max_length=255, unique=True)
     nickname = models.CharField(max_length=15)
     is_bussiness = models.BooleanField(default=False) # default
-
+    id = models.AutoField(primary_key=True)
     # PermissionMixin: 권한 관리
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)

@@ -11,6 +11,6 @@ from users.models import User
 class Subscription(CommonModel):
     subscriber = models.ForeignKey('users.User', on_delete=models.CASCADE, related_name='subscriptions')
     subscribed_to = models.ForeignKey('users.User', on_delete=models.CASCADE, related_name='subscribers')
-    # related_name 역참조
+    # related_name 자기 자기를 참조
     # subscriber_set -> subscriptions (내가 구독한 사람들)
     # subscribed_to_set -> subscribers (나를 구독한 사람들)

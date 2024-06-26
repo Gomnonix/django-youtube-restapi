@@ -10,7 +10,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'test')
-DEBUG = bool(int(os.environ.get('DEBUG', 0))) # 0: False
+DEBUG = True #bool(int(os.environ.get('DEBUG', 0))) # 0: False
 ALLOWED_HOSTS = ['*'] # ex) ec2-123-123-123
 
 
@@ -35,7 +35,6 @@ CUSTOM_USER_APPS = [
     'drf_spectacular',
     'rest_framework',
     'channels',
-	'chat.apps.ChatConfig',
 ]
 
 INSTALLED_APPS = CUSTOM_USER_APPS + DJANGO_SYSTEM_APPS
@@ -73,13 +72,19 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'app.wsgi.application'
+# WSGI 애플리케이션 개체의 전체 Python 경로를 지정
 ASGI_APPLICATION = 'app.routes.application'
+# ASGI 애플리케이션 객체의 전체 Python 경로를 지정
+# 'application': 파일 내에 정의된 WSGI or ASGI 애플리케이션 호출 가능 항목입니다
+
 
 CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels.layers.InMemoryChannelLayer"
     },
 }
+# "BACKEND": 채널이 이 레이어에 사용할 백엔드를 지정합니다.
+# "channels.layers.InMemoryChannelLayer": 서버의 메모리에 데이터를 저장하는 인메모리 백엔드입니다.
 
 
 # Database
@@ -129,7 +134,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'static'
+STATICFILES_DIR = [
+    BASE_DIR / 'static',
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
@@ -138,8 +147,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'users.User'
 
-STATIC_URL = '/static/static/'
-MEDIA_URL = '/static/media/'
-
-MEDIA_ROOT = '/vol/web/media'
-STATIC_ROOT = '/vol/web/static'
+# STATIC_URL = '/static/'
+# MEDIA_URL = '/static/media/'
+# MEDIA_ROOT = BASE_DIR / 'media'
