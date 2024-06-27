@@ -20,8 +20,7 @@ class Reaction(CommonModel):
         (DISLIKE, 'Dislike'),
         (NO_REACTION, 'No Reaction')
     )
-
-    # column: reactions -> migration -> reaction -> migration
+    
     reaction = models.IntegerField(
         choices=REACTON_CHOICES,
         default=NO_REACTION

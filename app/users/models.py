@@ -35,10 +35,6 @@ class UserManager(BaseUserManager):
     # docker-compose run --rm app sh -c 'python manage.py showmigrations': 디버깅) 유저 충돌 문제 해결 방법
     # docker-compose run --rm app sh -c 'python manage.py createsuperuser', 슈퍼 user 생성
 
-# - email
-# - password
-# - nickname
-# - is_business
 class User(AbstractBaseUser, PermissionsMixin):
     email = models.CharField(max_length=255, unique=True)
     nickname = models.CharField(max_length=15)
