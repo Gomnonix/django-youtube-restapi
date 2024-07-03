@@ -5,6 +5,8 @@ from drf_spectacular.views import ( # 우리가 만든 이미지에는 추가 �
     SpectacularRedocView, 
     SpectacularSwaggerView
 )
+from django.conf.urls.static import static
+from django.conf import settings
 
 
 urlpatterns = [
@@ -15,3 +17,10 @@ urlpatterns = [
     path('api/v1/videos/', include('videos.urls')),
     path('api/v1/subscriptions/', include('subscriptions.urls'))
 ]
+
+urlpatterns += static(
+    # URL의 접두어가 MEDIA_URL일 때는 정적파일을 돌려준다.
+    prefix=settings.MEDIA_URL,
+    # 돌려줄 디렉터리는 MEDIA_ROOT를 기준으로 한다.
+    document_root=settings.MEDIA_ROOT,
+)
